@@ -40,12 +40,22 @@ mybatis-plus:
       column-underline: true
   configuration:
     map-underscore-to-camel-case: true
-auth:
-  user:
-    token-header: Authorization
-ribbon:
-  ReadTimeout: 120000
-  ConnectTimeout: 120000
+#auth:
+#  user:
+#    token-header: Authorization
+#ribbon:
+#  ReadTimeout: 120000
+#  ConnectTimeout: 120000
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password:
+  lettuce:
+    pool:
+      max-active: 50
+      max-idle: 20
+      max-wait: 60s
+      min-idle: 5
 
 
 

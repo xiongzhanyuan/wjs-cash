@@ -7,6 +7,7 @@ import com.cash.business.entity.HomePageModule;
 import com.cash.business.service.HomePageModuleService;
 import com.cash.common.base.BaseController;
 import com.cash.common.base.BasePage;
+import com.cash.common.base.BaseRedisService;
 import com.cash.common.message.BaseResponse;
 import com.cash.common.message.PageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class HomePageModuleController extends BaseController<HomePageModuleServi
     @Autowired
     private HomePageModuleService homePageModuleService;
 
+    @Autowired
+    private BaseRedisService baseRedisService;
+
     @PostMapping("/fetchList")
     public BaseResponse getLoanInfo(@RequestBody BasePage<HomePageModule> homePageModuleBasePage){
 
@@ -32,6 +36,7 @@ public class HomePageModuleController extends BaseController<HomePageModuleServi
         IPage resultPage = homePageModuleService.selectPage(requestPage, new QueryWrapper<HomePageModule>().lambda()
                 .like(HomePageModule::getName, homePageModule.getName()).orderByAsc(HomePageModule :: getSort));
 
+        baseRedisService.set("test", "12345678", 60);
 
         return new PageResponse<HomePageModule>(resultPage.getCurrent(), requestPage.getTotal(), requestPage.getRecords());
     }

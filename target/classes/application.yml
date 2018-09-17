@@ -46,6 +46,16 @@ auth:
 ribbon:
   ReadTimeout: 120000
   ConnectTimeout: 120000
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password:
+  lettuce:
+    pool:
+      max-active: 50
+      max-idle: 20
+      max-wait: 60s
+      min-idle: 5
 
 
 
