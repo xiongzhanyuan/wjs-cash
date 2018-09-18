@@ -25,10 +25,10 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       filters: stat,wall,slf4j
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-  rabbitmq:
-    host: 172.16.10.147
-    username: admin
-    password: admin
+#  rabbitmq:
+#    host: 172.16.10.147
+#    username: admin
+#    password: admin
   # 热部署配置开启
   devtools:
     restart:
